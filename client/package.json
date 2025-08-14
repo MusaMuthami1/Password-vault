@@ -4,6 +4,9 @@
   "private": true,
   "description": "CipherNest Password Manager Vault Frontend",
   "dependencies": {
+    "@capacitor/android": "^7.4.2",
+    "@capacitor/cli": "^7.4.2",
+    "@capacitor/core": "^7.4.2",
     "@emailjs/browser": "^4.4.1",
     "@heroicons/react": "^2.1.1",
     "@testing-library/jest-dom": "^6.1.4",
