@@ -1,0 +1,24 @@
+{
+  "name": "ciphernest-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm start --prefix client\"",
+    "seed": "npm run seed --prefix server",
+    "build": "cd client && npm run build",
+    "start:prod": "cd server && npm start",
+    "deploy:web": "npm run build && npm run start:prod",
+    "setup:ssl": "node generate-ssl.js",
+    "start:https": "cd server && set HTTPS_PORT=5443 && npm start",
+    "install:capacitor": "cd client && npm install @capacitor/core @capacitor/cli @capacitor/android @capacitor/ios",
+    "init:capacitor": "cd client && npx cap init CipherNest com.ciphernest.vault",
+    "build:android": "cd client && npm run build && npx cap sync && npx cap open android",
+    "build:ios": "cd client && npm run build && npx cap sync && npx cap open ios"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "mongodb": "^6.18.0"
+  }
+}
