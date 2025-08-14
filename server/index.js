@@ -69,8 +69,10 @@ app.use(passport.session());
 // Routes
 app.get('/', (req, res) => {
   res.json({ 
-    message: 'CipherVault API is running!', 
-    version: '1.0.0',
+    message: 'CipherVault API is running! 🚀', 
+    version: '1.0.1',
+    status: 'OAuth Fixed - Ready for Production',
+    timestamp: new Date().toISOString(),
     endpoints: {
       auth: '/api/auth',
       vault: '/api/vault',
