@@ -10,10 +10,19 @@
     "deploy:web": "npm run build && npm run start:prod",
     "setup:ssl": "node generate-ssl.js",
     "start:https": "cd server && set HTTPS_PORT=5443 && npm start",
-    "install:capacitor": "cd client && npm install @capacitor/core @capacitor/cli @capacitor/android @capacitor/ios",
-    "init:capacitor": "cd client && npx cap init CipherNest com.ciphernest.vault",
-    "build:android": "cd client && npm run build && npx cap sync && npx cap open android",
-    "build:ios": "cd client && npm run build && npx cap sync && npx cap open ios"
+    "install:capacitor": "cd client && npm install @capacitor/core @capacitor/cli @capacitor/android @capacitor/ios @capacitor/app @capacitor/haptics @capacitor/keyboard @capacitor/status-bar",
+    "init:capacitor": "cd client && npx cap init CipherVault com.ciphervault.app",
+    "add:android": "cd client && npx cap add android",
+    "add:ios": "cd client && npx cap add ios",
+    "build:android": "cd client && npm run build && npx cap copy android && npx cap sync android",
+    "build:ios": "cd client && npm run build && npx cap copy ios && npx cap sync ios",
+    "open:android": "cd client && npx cap open android",
+    "open:ios": "cd client && npx cap open ios",
+    "release:android": "cd client/android && ./gradlew assembleRelease",
+    "bundle:android": "cd client/android && ./gradlew bundleRelease",
+    "clean:android": "cd client/android && ./gradlew clean",
+    "deploy:digitalocean": "bash deploy/deploy.sh",
+    "commit:deploy": "git add . && git commit -m \"Production deployment ready\" && git push origin main"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
