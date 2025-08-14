@@ -25,7 +25,7 @@
     }
   ],
   "env": {
-    "REACT_APP_API_URL": "https://your-backend-url.vercel.app/api",
+    "REACT_APP_API_URL": "https://ciphervault-20v2e1pfu-musas-projects-0c653b67.vercel.app/api",
     "REACT_APP_GITHUB_CLIENT_ID": "Ov23li9991Hvb8GQtszI"
   }
 }
