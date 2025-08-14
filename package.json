@@ -1,33 +1,17 @@
 {
-  "name": "ciphernest-root",
+  "name": "ciphervault-backend",
   "version": "1.0.0",
-  "private": true,
+  "description": "CipherVault Password Manager Backend",
+  "main": "server/index.js",
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix server\" \"npm start --prefix client\"",
-    "seed": "npm run seed --prefix server",
-    "build": "cd client && npm run build",
-    "start:prod": "cd server && npm start",
-    "deploy:web": "npm run build && npm run start:prod",
-    "setup:ssl": "node generate-ssl.js",
-    "start:https": "cd server && set HTTPS_PORT=5443 && npm start",
-    "install:capacitor": "cd client && npm install @capacitor/core @capacitor/cli @capacitor/android @capacitor/ios @capacitor/app @capacitor/haptics @capacitor/keyboard @capacitor/status-bar",
-    "init:capacitor": "cd client && npx cap init CipherVault com.ciphervault.app",
-    "add:android": "cd client && npx cap add android",
-    "add:ios": "cd client && npx cap add ios",
-    "build:android": "cd client && npm run build && npx cap copy android && npx cap sync android",
-    "build:ios": "cd client && npm run build && npx cap copy ios && npx cap sync ios",
-    "open:android": "cd client && npx cap open android",
-    "open:ios": "cd client && npx cap open ios",
-    "release:android": "cd client/android && ./gradlew assembleRelease",
-    "bundle:android": "cd client/android && ./gradlew bundleRelease",
-    "clean:android": "cd client/android && ./gradlew clean",
-    "deploy:digitalocean": "bash deploy/deploy.sh",
-    "commit:deploy": "git add . && git commit -m \"Production deployment ready\" && git push origin main"
-  },
-  "devDependencies": {
-    "concurrently": "^8.2.2"
+    "start": "cd server && npm start",
+    "build": "cd server && npm install",
+    "dev": "cd server && npm run dev"
   },
   "dependencies": {
-    "mongodb": "^6.18.0"
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }

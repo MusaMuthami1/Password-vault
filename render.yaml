@@ -1,0 +1,7 @@
+version: "1"
+build:
+  - name: server
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    env:
+      - NODE_ENV=production
