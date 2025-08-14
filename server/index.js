@@ -22,7 +22,27 @@ const app = express();
 
 // Security Middlewares
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+
+// CORS configuration for multiple origins
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  'https://client-ol029p464-musas-projects-0c653b67.vercel.app',
+  'http://localhost:3000',
+  'https://localhost:3000'
+];
+
+app.use(cors({ 
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(null, true); // Allow all origins for now
+    }
+  },
+  credentials: true 
+}));
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -47,6 +67,23 @@ app.use(passport.session());
 // app.use(limiter);
 
 // Routes
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'CipherVault API is running!', 
+    version: '1.0.0',
+    endpoints: {
+      auth: '/api/auth',
+      vault: '/api/vault',
+      user: '/api/user',
+      payments: '/api/payments'
+    }
+  });
+});
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/vault', verifyJWT, vaultRoutes);
 app.use('/api/user', verifyJWT, userRoutes);
